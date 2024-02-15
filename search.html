@@ -44,6 +44,19 @@
 
 </table>
 
+<script>
+    let ducks = [];
+    async function getAll() {
+        let response = await fetch("http://localhost:8080/ducks");
+        let data = await response.json();
+        return data;
+    }
+
+    async function search() {
+
+        if (ducks.length == 0) {
+            ducks = await getAll();
+        }
 
         let duckType = document.getElementById("type").value;
         let table = document.getElementById("result");
